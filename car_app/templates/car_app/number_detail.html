@@ -1,0 +1,19 @@
+{% extends 'car_app/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<a class="btn btn-default" href="{% url 'car_app:number_edit' pk=number_instance.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
+
+<h2>Описание машины </h2>
+
+  <h4>Модель: {{number_instance.model_name}}</h4>
+  <p></p>
+  <h4>Бортовой номер: <a href="{% url 'car_app:number_detail' pk=number_instance.pk %}">{{number_instance.bort_number}}</a></h4>
+  <p>Текущая загруженность машины: {{number_instance.current_weight}} тонн</p>
+  <p>Перегруз машины: {{number_instance.overload}} %</p>
+  <p>Описание: {{number_instance.truck_number_description}}</p>
+
+{% endblock  %}
+
+

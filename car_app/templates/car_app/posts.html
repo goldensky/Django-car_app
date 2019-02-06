@@ -1,0 +1,38 @@
+{% extends 'car_app/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+  
+  {% for post in posts %}
+    {% if post.published_date %}
+      <div class="date">
+        {{post.published_date}}
+      </div>
+          
+      <h4><a href="{% url 'car_app:post_detail' pk=post.pk %}">{{post.title}}</a></h4>
+      <p>{{ post.text|linebreaksbr }}</p>
+      </br></br>
+     
+    {% endif %}    
+  {% endfor %}
+  
+  
+  <div class="pagination">
+    <span class="step-links">
+      {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}">prev</a>
+      {% endif %}
+      
+      <span class="current">
+        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+      </span>
+      
+      {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">next</a>
+      {% endif %}
+    </span>   
+  </div>
+
+
+{% endblock  %}

@@ -1,0 +1,16 @@
+{% extends 'car_app/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+  <a class="btn btn-default" href="{% url 'car_app:model_edit' pk=model_instance.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+  <h1>Описание модели</h1>
+
+  <h4>Модель: {{model_instance.model_name}}</h4>
+  <p></p>
+  <p>Максимальная грузоподъемность: {{model_instance.max_capacity}}</p>
+  <p>Описание: {{model_instance.model_description}}</p>
+
+  
+{% endblock  %}
+

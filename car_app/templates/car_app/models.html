@@ -1,0 +1,38 @@
+{% extends 'car_app/base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+
+  <h2>Все модели парка</h2>
+  </br>
+
+  {% for model in models %}
+    <h2><a href="{% url 'car_app:model_detail' pk=model.pk  %}">{{model.model_name}}</a></h2>
+
+    <h4>Максимальная грузоподъемность: {{model.max_capacity}} тонн</h4> 
+    <h4>Описание модели: </h4> 
+    <p>{{model.model_description}}</p>
+    </br>
+  {% endfor  %}
+
+  <div class="pagination">
+    <span class="step-links">
+      {% if models.has_previous %}
+        <a href="?page={{ models.previous_page_number }}">prev</a>
+      {% endif %} 
+      
+      <span class="current">
+        Page {{ models.number }} of {{ models.paginator.num_pages }}.
+      </span>
+      
+      {% if models.has_next %}
+        <a href="?page={{ models.next_page_number }}">next</a>
+      {% endif %}
+    </span>    
+  </div>
+
+{% endblock content %}
+
+

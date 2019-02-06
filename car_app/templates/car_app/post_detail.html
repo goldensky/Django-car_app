@@ -1,0 +1,23 @@
+{% extends 'car_app/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+	<a class="btn btn-default" href="{% url 'car_app:post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+  
+	<h4>Post detail:</h4>
+  	</br>
+  	<div class="post">
+  		{% if post.published_date %}
+  			<div class="date">
+  				{{post.published_date}}
+  			</div>
+  		{% endif %}
+  		
+  		<h1>{{post.title}}</h1>
+  		<p>{{post.text}}</p>
+
+  	</div>
+
+
+{% endblock  %}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<html >
+  <head>
+    <title> {% block title %} {% endblock %} </title>
+    <meta charset ="utf -8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+	
+    <!-- Bootstrap CSS -->  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap -->	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+	<!-- Bootstrap Form Helpers -->
+	<link rel="stylesheet" href="{%  static 'css/bootstrap-formhelpers.min.css' %}"  media="screen">
+    <link rel="stylesheet" href="{%  static 'css/style.css' %}"/>
+
+    {% block static %}
+    {% endblock %}
+
+  </head>
+
+  <body>
+  	<!--block pageWrapper - begin-->
+  	<div class = "pageWrapper"  style="overflow: visible;">
+  		<nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <ul class="nav navbar-nav">
+          
+            <li><a class="navbar-brand" href="{% url 'index' %}">Main</a></li>
+            <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+
+            <li><a class="navbar-link" href="{% url 'car_app:models' %}">Models</a></li>
+            <li><a class="navbar-link" href="{% url 'car_app:numbers' %}">Numbers</a></li>
+            <li><a class="navbar-link" href="{% url 'car_app:posts' %}">Posts</a></li>
+
+            <li><a class="navbar-link" href="{% url 'car_app:model_new' %}">New model</a></li>
+            <li><a class="navbar-link" href="{% url 'car_app:number_new' %}">New number</a></li>
+            <li><a class="navbar-link" href="{% url 'car_app:post_new' %}">New post</a></li>
+      
+          </ul>
+        </div>
+      </nav>
+  	</div>
+
+
+  	<div class = "pageWrapper"  style="overflow: visible;">
+    
+    	<div class ="container">
+        	{% block content %}                               
+            {% endblock %}
+            	
+    	</div>
+        
+    </div>
+    <!--block pageWrapper - end-->
+
+
+  	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<!-- Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<!-- Bootstrap Form Helpers -->
+	<script src="{% static  'js/bootstrap-formhelpers.min.js' %}"></script>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<script src="dist/js/bootstrap-select.min.js"></script>
+
+  <footer></footer>
+  </body>
+
+</html>

@@ -1,0 +1,58 @@
+{% extends 'car_app/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+  <div id="post-form">
+    <form id="truck-search-form"  method="get">
+    	<label class="field truck-choice" for="truck-choice">Модели:</label>
+    
+    		<select  id="truck_model_select" class="custom-select" name="truck_model_select">
+    		<!-- <option  selected="selected">Выбрать </option>  -->
+    			<option value="all" > Все </option> 
+    			   		
+    			{% for item  in all_truck_models %} 
+    		 	<option value="{{item.id}}">{{item.model_name}}</option> 
+    		 	{% endfor  %}
+    		 	
+    		</select>    		 
+    		<button id="show_model" type="submit" action="" name="" button_value= item_id_value >Применить</button>
+    		    
+    </form>
+    
+    Всего машин: {{amount_numbers}}
+  </div>
+
+
+<h1>Машины парка: </h1>
+  <!--  TABLE    -->
+			
+  {% if requested_numbers %}
+	  <table class="table table-hover">
+	    <thead>		
+	      <th>Бортовой номер</th>
+	      <th>Модель</th>
+	      <th>Макс. грузоподъемность,т</th>
+	      <th>Текущий вес,т</th>
+	      <th>Перегруз,%</th>  
+	    </thead>
+
+	    <tbody id="truck-table">	
+	      {% for truck in requested_numbers  %}
+	        <tr>		
+	          <td><a href="{% url 'car_app:number_detail' pk=truck.pk %}">{{truck.bort_number}} </a></td>
+	          <td>{{truck.model_name}}</td>
+	          <td>{{truck.model_name.max_capacity}}</td>
+	          <td>{{truck.current_weight}}</td>
+	          <td>{{truck.overload}} </td>
+	        </tr>
+	        {% endfor  %}	 
+		</tbody>	
+  	  </table>
+
+    {% else %}
+      <p>No entries</p>
+    {% endif  %}
+
+{% endblock  %}
+
